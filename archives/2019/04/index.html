@@ -6,11 +6,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>aicaprio的博客</title>
+  <title>Archives: 2019/4 | aicaprio的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="aicaprio的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/archives/2019/04/index.html">
 <meta property="og:site_name" content="aicaprio的博客">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -150,240 +150,47 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-使用Gradle配置SonarQube" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/03/使用Gradle配置SonarQube/">使用Gradle配置SonarQube</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/03/使用Gradle配置SonarQube/" class="archive-article-date">
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/04/03/使用Gradle配置SonarQube/" class="archive-article-date">
   	<time datetime="2019-04-03T01:59:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-03</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="主要分两步："><a href="#主要分两步：" class="headerlink" title="主要分两步："></a>主要分两步：</h3><h5 id="一-代码内Gradle配置"><a href="#一-代码内Gradle配置" class="headerlink" title="一. 代码内Gradle配置"></a>一. 代码内Gradle配置</h5><p>首先是Project级Gradle的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123;url &quot;https://plugins.gradle.org/m2/&quot;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &quot;org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plugins &#123;</span><br><span class="line">    id &quot;org.sonarqube&quot; version &quot;2.7&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后是主Module的Gradle配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.android.application&apos;</span><br><span class="line"></span><br><span class="line">sonarqube &#123;</span><br><span class="line">    properties &#123;</span><br><span class="line">        property &quot;sonar.sources&quot;, &quot;src/main/java&quot;</span><br><span class="line">        property &quot;sonar.projectKey&quot;, &quot;$&#123;YourKey&#125;&quot;</span><br><span class="line">        property &quot;sonar.projectName&quot;, &quot;$&#123;YourName&#125;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h5 id="二-本地环境Gradle配置"><a href="#二-本地环境Gradle配置" class="headerlink" title="二. 本地环境Gradle配置"></a>二. 本地环境Gradle配置</h5><p>定位到<code>~/.gradle</code>目录下，如果没有<code>gradle.properties</code>，则新建该文件。<br>配置如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemProp.sonar.host.url=xxx</span><br><span class="line">#----- Token generated from an account with &apos;publish analysis&apos; permission</span><br><span class="line">systemProp.sonar.login=xxx</span><br><span class="line">org.gradle.caching=true</span><br></pre></td></tr></table></figure></p>
-<p>更多内容，请见<a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Gradle" target="_blank" rel="noopener">官方文档</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/03/使用Gradle配置SonarQube/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-名词汇总篇" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/29/名词汇总篇/">名词汇总篇</a>
+      <a class="archive-article-title" href="/2019/04/03/使用Gradle配置SonarQube/">使用Gradle配置SonarQube</a>
     </h1>
   
 
-        
-        <a href="/2019/03/29/名词汇总篇/" class="archive-article-date">
-  	<time datetime="2019-03-29T05:39:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>持续更新中 。。。</strong></p>
-<h5 id="1-XML，Xmlns"><a href="#1-XML，Xmlns" class="headerlink" title="1. XML，Xmlns"></a>1. XML，Xmlns</h5><p>XML（可扩展标记语言），标准通用标记语言的子集，是一种用于标记电子文件使其具有结构性的标记语言。</p>
-<p>Xmlns（XML Namespaces的缩写）是一个属性，是XML（标准通用标记语言的子集）命名空间。作用是赋予命名空间一个唯一的名称。<br>XML 命名空间属性被放置于元素的开始标签之中，并使用以下的语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xmlns:namespace-prefix=&quot;namespaceURI&quot;</span><br></pre></td></tr></table></figure></p>
-<p>当命名空间被定义在元素的开始标签中时，所有带有相同前缀的子元素都会与同一个命名空间相关联。</p>
-<h5 id="2-URI-parts-and-components"><a href="#2-URI-parts-and-components" class="headerlink" title="2. URI parts and components"></a>2. URI parts and components</h5><p>An URI string is composed of 8 components and 5 parts:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">foo://example.com:8042/over/there?name=ferret#nose</span><br><span class="line"> \_/   \______________/\_________/ \_________/ \__/</span><br><span class="line">  |           |            |            |        |</span><br><span class="line">scheme     authority       path        query   fragment</span><br><span class="line">  |   _____________________|__</span><br><span class="line"> / \ /                        \</span><br><span class="line"> urn:example:animal:ferret:nose</span><br></pre></td></tr></table></figure>
-<p>The URI authority part in itself can be composed of up to 3 parts:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">john:doe@example.com:8042</span><br><span class="line">\______/ \_________/ \__/</span><br><span class="line">    |         |        |</span><br><span class="line">userinfo    host     port</span><br></pre></td></tr></table></figure>
-<p>The userinfo part is composed of the user and the pass components:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">captain:future</span><br><span class="line">\_____/ \____/</span><br><span class="line">   |      |</span><br><span class="line">  user   pass</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>URI</code>：Uniform Resource Identifier（统一资源标识符）<br><code>URL</code>：Uniform Resource Locator（统一资源定位符）<br><code>URN</code>：Uniform Resource Name（统一资源名称）<br><br><code>URL</code>和<code>URN</code>都是<code>URI</code>的子集，<a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Relationship_between_URI.2C_URL.2C_and_URN" target="_blank" rel="noopener">点击了解三者关系</a>。</p>
-</blockquote>
-<p>其他相关：<br><code>java.net.URI</code><br><code>android.net.Uri</code><br><code>java.net.URL</code></p>
-<h5 id="3-路径分隔符"><a href="#3-路径分隔符" class="headerlink" title="3. 路径分隔符"></a>3. 路径分隔符</h5><blockquote>
-<p><code>Linux</code>，<code>Unix</code>，<code>URI/URL</code> 用的是<strong>斜杠</strong>（<code>&quot;/&quot;</code>）</p>
-</blockquote>
-<blockquote>
-<p><code>Windows</code>用的是<strong>反斜杠</strong>（<code>&quot;\&quot;</code>）</p>
-</blockquote>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JAVAEE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/29/名词汇总篇/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-未收天子河湟地，不拟回头望故乡" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/28/未收天子河湟地，不拟回头望故乡/">未收天子河湟地，不拟回头望故乡</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/28/未收天子河湟地，不拟回头望故乡/" class="archive-article-date">
-  	<time datetime="2019-03-28T13:33:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/2019/03/28/未收天子河湟地，不拟回头望故乡/十字.jpeg" alt="图片"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/28/未收天子河湟地，不拟回头望故乡/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -405,9 +212,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
