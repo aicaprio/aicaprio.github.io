@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>使用Gradle配置SonarQube | aicaprio的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="主要分两步：一. 代码内Gradle配置首先是Project级Gradle的配置：12345678910111213141516buildscript &amp;#123;    repositories &amp;#123;        jcenter()        maven &amp;#123;url &amp;quot;https://plugins.gradle.org/m2/&amp;quot;&amp;#125;    &amp;#">
+  <meta name="description" content="主要分两步： 一. 代码内Gradle配置首先是Project级Gradle的配置：12345678910111213141516buildscript &amp;#123;    repositories &amp;#123;        jcenter()        maven &amp;#123;url &amp;quot;https://plugins.gradle.org/m2/&amp;quot;&amp;#125;    &amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Gradle配置SonarQube">
 <meta property="og:url" content="http://yoursite.com/2019/04/03/使用Gradle配置SonarQube/index.html">
 <meta property="og:site_name" content="aicaprio的博客">
-<meta property="og:description" content="主要分两步：一. 代码内Gradle配置首先是Project级Gradle的配置：12345678910111213141516buildscript &amp;#123;    repositories &amp;#123;        jcenter()        maven &amp;#123;url &amp;quot;https://plugins.gradle.org/m2/&amp;quot;&amp;#125;    &amp;#">
+<meta property="og:description" content="主要分两步： 一. 代码内Gradle配置首先是Project级Gradle的配置：12345678910111213141516buildscript &amp;#123;    repositories &amp;#123;        jcenter()        maven &amp;#123;url &amp;quot;https://plugins.gradle.org/m2/&amp;quot;&amp;#125;    &amp;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-04-03T02:15:28.876Z">
+<meta property="og:updated_time" content="2019-04-03T02:17:45.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Gradle配置SonarQube">
-<meta name="twitter:description" content="主要分两步：一. 代码内Gradle配置首先是Project级Gradle的配置：12345678910111213141516buildscript &amp;#123;    repositories &amp;#123;        jcenter()        maven &amp;#123;url &amp;quot;https://plugins.gradle.org/m2/&amp;quot;&amp;#125;    &amp;#">
+<meta name="twitter:description" content="主要分两步： 一. 代码内Gradle配置首先是Project级Gradle的配置：12345678910111213141516buildscript &amp;#123;    repositories &amp;#123;        jcenter()        maven &amp;#123;url &amp;quot;https://plugins.gradle.org/m2/&amp;quot;&amp;#125;    &amp;">
   
     <link rel="alternative" href="/atom.xml" title="aicaprio的博客" type="application/atom+xml">
   
@@ -172,10 +172,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="主要分两步："><a href="#主要分两步：" class="headerlink" title="主要分两步："></a>主要分两步：</h3><h5 id="一-代码内Gradle配置"><a href="#一-代码内Gradle配置" class="headerlink" title="一. 代码内Gradle配置"></a>一. 代码内Gradle配置</h5><p>首先是Project级Gradle的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123;url &quot;https://plugins.gradle.org/m2/&quot;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &quot;org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plugins &#123;</span><br><span class="line">    id &quot;org.sonarqube&quot; version &quot;2.7&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+        <p><em>主要分两步：</em></p>
+<h5 id="一-代码内Gradle配置"><a href="#一-代码内Gradle配置" class="headerlink" title="一. 代码内Gradle配置"></a>一. 代码内Gradle配置</h5><p>首先是Project级Gradle的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line"></span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">        maven &#123;url &quot;https://plugins.gradle.org/m2/&quot;&#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &quot;org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">plugins &#123;</span><br><span class="line">    id &quot;org.sonarqube&quot; version &quot;2.7&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>然后是主Module的Gradle配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.android.application&apos;</span><br><span class="line"></span><br><span class="line">sonarqube &#123;</span><br><span class="line">    properties &#123;</span><br><span class="line">        property &quot;sonar.sources&quot;, &quot;src/main/java&quot;</span><br><span class="line">        property &quot;sonar.projectKey&quot;, &quot;$&#123;YourKey&#125;&quot;</span><br><span class="line">        property &quot;sonar.projectName&quot;, &quot;$&#123;YourName&#125;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h5 id="二-本地环境Gradle配置"><a href="#二-本地环境Gradle配置" class="headerlink" title="二. 本地环境Gradle配置"></a>二. 本地环境Gradle配置</h5><p>定位到<code>~/.gradle</code>目录下，如果没有<code>gradle.properties</code>，则新建该文件。<br>配置如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemProp.sonar.host.url=xxx</span><br><span class="line">#----- Token generated from an account with &apos;publish analysis&apos; permission</span><br><span class="line">systemProp.sonar.login=xxx</span><br><span class="line">org.gradle.caching=true</span><br></pre></td></tr></table></figure></p>
-<p>更多内容，请见<a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Gradle" target="_blank" rel="noopener">官方文档</a></p>
+<p>更多内容，请见<a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Gradle" target="_blank" rel="noopener">官方文档</a>。</p>
 
       
 
@@ -389,11 +390,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">JAVAEE</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JAVAEE</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
