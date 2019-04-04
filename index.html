@@ -175,7 +175,7 @@
 <p>注意：<br><code>plugins</code>前面只可以是<code>buildscript</code>或者<code>plugins</code>，<br>类似这样的<code>apply from: &quot;dependencies.gradle&quot;</code>放在<code>plugins</code>前面任何地方，都会出错。</p>
 <p>然后是<code>主Module</code>的Gradle配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: &apos;com.android.application&apos;</span><br><span class="line"></span><br><span class="line">sonarqube &#123;</span><br><span class="line">    properties &#123;</span><br><span class="line">        property &quot;sonar.sources&quot;, &quot;src/main/java&quot;</span><br><span class="line">        property &quot;sonar.projectKey&quot;, &quot;$&#123;YourKey&#125;&quot;</span><br><span class="line">        property &quot;sonar.projectName&quot;, &quot;$&#123;YourName&#125;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h5 id="二-本地环境Gradle配置"><a href="#二-本地环境Gradle配置" class="headerlink" title="二. 本地环境Gradle配置"></a>二. 本地环境Gradle配置</h5><p>定位到<code>~/.gradle</code>目录下，如果没有<code>gradle.properties</code>，则新建该文件。<br>配置如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemProp.sonar.host.url=xxx</span><br><span class="line">#----- Token generated from an account with &apos;publish analysis&apos; permission</span><br><span class="line">systemProp.sonar.login=xxx</span><br><span class="line">org.gradle.caching=true</span><br></pre></td></tr></table></figure></p>
-<p>配置完毕后，会产生<code>root级gralde</code>-&gt;<code>Task</code>-&gt;<code>other</code>-&gt;<code>sonarqube</code>指令，直接run即可。</p>
+<p>配置完毕并且sync后，会产生<code>root级gralde</code>-&gt;<code>Task</code>-&gt;<code>other</code>-&gt;<code>sonarqube</code>指令，直接run即可。</p>
 <p>更多内容，请见<a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Gradle" target="_blank" rel="noopener">官方文档。</a></p>
 
       
@@ -482,11 +482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color2">JAVAEE</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JAVAEE</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
