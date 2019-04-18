@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/泛化例子.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/实现箭头.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/实现例子.png">
-<meta property="og:updated_time" content="2019-04-18T07:33:44.848Z">
+<meta property="og:updated_time" content="2019-04-18T07:45:25.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UML类图中的关系类型">
 <meta name="twitter:description" content="开始前，先介绍两个在线制作UML的网站:LucidChart 和 ProcessOn 然后是“类图”的官方Wiki。直接上官方的原因是为了避免在理解某些术语时可能出现的“义同词不同”的歧义。另附上其他好的文章。 关系(Relationships)关系是一个通用术语，涵盖在类和对象图上找到的特定类型的逻辑连接。一个类可能涉及与其他类的一个或多个关系，下面逐一介绍各种类型关系。 类级关系(Class-">
@@ -195,7 +195,10 @@
 <p>实现是连接客户端元素和供应商元素的类、接口之间的关系。类与接口之间的实现关系表明该类实现了该接口提供的操作。</p>
 <p>它的标志是：<strong>虚线 + 空箭头</strong>，如下图所示：<br><img src="/2019/04/17/UML类图中的关系类型/实现箭头.png" alt="箭头"></p>
 <p><img src="/2019/04/17/UML类图中的关系类型/实现例子.png" alt="示例"></p>
-<h3 id="对象级关系-Instance-level-relationships"><a href="#对象级关系-Instance-level-relationships" class="headerlink" title="对象级关系(Instance-level relationships)"></a>对象级关系(Instance-level relationships)</h3>
+<h3 id="对象级关系-Instance-level-relationships"><a href="#对象级关系-Instance-level-relationships" class="headerlink" title="对象级关系(Instance-level relationships)"></a>对象级关系(Instance-level relationships)</h3><h6 id="依赖-Dependency"><a href="#依赖-Dependency" class="headerlink" title="依赖(Dependency)"></a>依赖(Dependency)</h6><p>Dependency指的是独立的模型元素与非独立的模型元素间的，一种语义上的关联性。</p>
+<p>如果两个模型元素，对其中一个元素(the server or target)定义的更改，可能会导致另外一个元素(the client or source)引起变化，则该场景描述的就是依赖的关系。</p>
+<p>这种关联是<strong>单向性的</strong>。</p>
+
       
 
       
