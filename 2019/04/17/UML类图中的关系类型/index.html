@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/实现例子.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/依赖箭头.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/依赖例子.png">
-<meta property="og:updated_time" content="2019-04-18T08:00:46.811Z">
+<meta property="og:updated_time" content="2019-04-19T07:24:38.362Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UML类图中的关系类型">
 <meta name="twitter:description" content="开始前，先介绍两个在线制作UML的网站:LucidChart 和 ProcessOn 然后是“类图”的官方Wiki。直接上官方的原因是为了避免在理解某些术语时可能出现的“义同词不同”的歧义。另附上其他好的文章。 关系(Relationships)关系是一个通用术语，涵盖在类和对象图上找到的特定类型的逻辑连接。一个类可能涉及与其他类的一个或多个关系，下面逐一介绍各种类型关系。 类级关系(Class-">
@@ -185,7 +185,7 @@
 <h3 id="关系-Relationships"><a href="#关系-Relationships" class="headerlink" title="关系(Relationships)"></a>关系(Relationships)</h3><p>关系是一个通用术语，涵盖在类和对象图上找到的特定类型的逻辑连接。一个类可能涉及与其他类的一个或多个关系，下面逐一介绍各种类型关系。</p>
 <h3 id="类级关系-Class-level-relationships"><a href="#类级关系-Class-level-relationships" class="headerlink" title="类级关系(Class-level relationships)"></a>类级关系(Class-level relationships)</h3><h6 id="泛化-Generalization-继承-Inheritance"><a href="#泛化-Generalization-继承-Inheritance" class="headerlink" title="泛化(Generalization)/继承(Inheritance)"></a>泛化(Generalization)/继承(Inheritance)</h6><p>泛化表示的是，两个相关类中的一个(子类)被认为是另一个(超类)的特殊形式，如此该超类被认为是该子类的泛化。实际上，这也意味着子类的任何实例也都是超类的实例。</p>
 <p>从生物分类中我们可以发现这是一个典型泛化树的例子：人类是猿猴的亚类，猿猴是哺乳动物的亚类，等等。通过短语“A是B”(人类是哺乳动物，哺乳动物是动物)最容易理解这种关系。</p>
-<p>泛化关系也称为“继承”或“是”关系。</p>
+<p>泛化关系也称为“继承”或“is a”关系。</p>
 <p>泛化关系中的超类也称为父类/基类。</p>
 <p>特化关系中的子类也称为派生类/继承类。</p>
 <p>“A是B的一种”的例子：“橡木是一种树”，“汽车是一种车”</p>
@@ -203,6 +203,21 @@
 <p>它的标志是：<strong>虚线 + 非封闭箭头</strong>，如下图所示：</p>
 <p><img src="/2019/04/17/UML类图中的关系类型/依赖箭头.png" alt="箭头"></p>
 <p><img src="/2019/04/17/UML类图中的关系类型/依赖例子.png" alt="示例"></p>
+<h6 id="关联-Association"><a href="#关联-Association" class="headerlink" title="关联(Association)"></a>关联(Association)</h6><p>There are four different types of association: bi-directional, uni-directional, aggregation (includes composition aggregation) and reflexive. Bi-directional and uni-directional associations are the most common ones.<br>For instance, a flight class is associated with a plane class bi-directionally. Association represents the static relationship shared among the objects of two classes.</p>
+<p>An association represents a family of links. A binary association (with two ends) is normally represented as a line. An association can link any number of classes. An association with three links is called a ternary association. An association can be named, and the ends of an association can be adorned with role names, ownership indicators, multiplicity, visibility, and other properties.</p>
+<p>An association represents a family of links. (关联关系可以被描绘为：一系列链接的族群)</p>
+<p>“二元关联”(具有两端)通常用一条直线来表示。</p>
+<p>一个关联关系中可以存在多个类之间的链接。如果一个关联关系中有三个链接，通常称之为“三元关联”。</p>
+<p>关联关系可以被命名，每个链接的尾端都可以被修饰，诸如：角色名称(role names)，所有权指示符(ownership indicators)，多样性(multiplicity)，可见性(visibility)以及其他属性。</p>
+<p>关联代表一系列链接。 二元关联（具有两端）通常表示为线。 关联可以链接任意数量的类。 与三个链接的关联称为三元关联。 </p>
+<p>可以命名关联，并且可以使用角色名称，所有权指示符，多样性，可见性和其他属性来装饰关联的末尾。</p>
+<p>有四种不同类型的关联：双向关联(bi-directionally)，单向关联(uni-directional)，聚合关联(aggregation)(包括组合/聚合)(includes composition aggregation)和自身关联(reflexive)(又称为递归关联)。 其中双向关联和单向关联是最常见的关联。</p>
+<p>关联的一个例子：航班类与飞机类就是一种双向关联。</p>
+<p>关联呈现的是<strong>两个对象间共享的静态关系。</strong> </p>
+<h6 id="聚合-Aggregation"><a href="#聚合-Aggregation" class="headerlink" title="聚合(Aggregation)"></a>聚合(Aggregation)</h6><p>聚合是“has a”关联关系的变体;聚合比关联更具体。它是一个代表整体或部分关系的协会。如图所示，教授’有一个’教课。作为一种关联，可以命名聚合并使用与关联相同的装饰。但是，聚合可能不涉及两个以上的类;它必须是二元关联。此外，在实现过程中聚合和关联之间几乎没有差异，并且该图可以完全跳过聚合关系。[7]</p>
+<p>当类是其他类的集合或容器时，可能会发生聚合，但所包含的类对容器没有强大的生命周期依赖性。当容器被销毁时，容器的内容仍然存在。</p>
+<p>在UML中，它在图形上表示为包含类的空心菱形形状，其中一条线将其连接到包含的类。聚合在语义上是一个扩展对象，在许多操作中被视为一个单元，尽管它在物理上由几个较小的对象组成。</p>
+<p>示例：图书馆和学生。这里学生可以不用图书馆存在，学生和图书馆之间的关系是聚合。</p>
 
       
 
