@@ -208,8 +208,7 @@
 <p>如下的图解所示：教授有一门课要教。</p>
 <p>聚合作为”关联”的一种，它同样具备”被命名”或者其他“关联”所具备的装饰内容。</p>
 <p>但是，聚合获取一般不涉及两个以上的类，它必须是一个“二元关联关系”，<strong>除此之外，“聚合”和“关联”几乎没什么区别。</strong></p>
-<p>Aggregation is a variant of the “has a” association relationship; aggregation is more specific than association. It is an association that represents a part-whole or part-of relationship. As shown in the image, a Professor ‘has a’ class to teach.<br> As a type of association, an aggregation can be named and have the same adornments that an association can. However, an aggregation may not involve more than two classes; it must be a binary association. Furthermore, there is hardly a difference between aggregations and associations during implementation, and the diagram may skip aggregation relations altogether.[7]</p>
-<p>Aggregation can occur when a class is a collection or container of other classes, but the contained classes do not have a strong lifecycle dependency on the container. The contents of the container still exist when the container is destroyed.</p>
+<p>当一个类是是其他类的集合或者容器时，这是一种聚合关系。但是这些被包含的类不应该对容器有强生命周期依赖关系，容器中的元素即使被销毁，容器本身也可以依旧存在。</p>
 <p>In UML, it is graphically represented as a hollow diamond shape on the containing class with a single line that connects it to the contained class. The aggregate is semantically an extended object that is treated as a unit in many operations, although physically it is made of several lesser objects.</p>
 <p>Example: Library and Students. Here the student can exist without library, the relation between student and library is aggregation.</p>
 <p>如图所示，教授’有一个’教课。作为一种关联，可以命名聚合并使用与关联相同的装饰。但是，聚合可能不涉及两个以上的类;它必须是二元关联。此外，在实现过程中聚合和关联之间几乎没有差异，并且该图可以完全跳过聚合关系。[7]</p>
