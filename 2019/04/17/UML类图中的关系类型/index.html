@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/关联例子.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/聚合例子1.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/聚合箭头.png">
-<meta property="og:updated_time" content="2019-07-31T02:53:27.930Z">
+<meta property="og:updated_time" content="2019-07-31T03:00:32.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UML类图中的关系类型">
 <meta name="twitter:description" content="开始前，先介绍两个在线制作UML的网站:LucidChart 和 ProcessOn 然后是“类图”的官方Wiki。直接上官方的原因是为了避免在理解某些术语时可能出现的“义同词不同”的歧义。另附上其他好的文章。 关系(Relationships)关系是一个通用术语，涵盖在类和对象图上找到的特定类型的逻辑连接。一个类可能涉及与其他类的一个或多个关系，下面逐一介绍各种类型关系。 类级关系(Class-">
@@ -225,17 +225,11 @@
 <p>聚合作为”关联”的一种，它同样具备”被命名”或者其他“关联”所具备的装饰内容。</p>
 <p>但是，聚合获取一般不涉及两个以上的类，它必须是一个“二元关联关系”，<strong>除此之外，“聚合”和“关联”几乎没什么区别。</strong> </p>
 <p>当一个类是是其他类的集合或者容器时，这是一种聚合关系。但是这些被包含的类不应该对容器有强生命周期依赖关系，容器中的元素即使被销毁，容器本身也可以依旧存在。</p>
-<p>一个聚合的例子：图书馆和学生。学生可以不依赖图书馆而存在，学生和图书馆之间的关系就是一种聚合。  </p>
+<p>The aggregate is semantically an extended object that is treated as a unit in many operations, although physically it is made of several lesser objects. </p>
+<p>聚合是一种<strong>语义上的</strong>扩展对象，在很多操作中，它经常被看做是一个独立单元来处理，尽管从<strong>物理上</strong>它是由很多较小级别的对象组成的。</p>
 <p>它的标志是：<strong>实线 + 空心菱形 菱形在左侧</strong>，如下图所示：</p>
 <p><img src="/2019/04/17/UML类图中的关系类型/聚合箭头.png" alt="箭头"></p>
-<p>Aggregation is a variant of the “has a” association relationship; aggregation is more specific than association. It is an association that represents a part-whole or part-of relationship. As shown in the image, a Professor ‘has a’ class to teach. As a type of association, an aggregation can be named and have the same adornments that an association can. However, an aggregation may not involve more than two classes; it must be a binary association. Furthermore, there is hardly a difference between aggregations and associations during implementation, and the diagram may skip aggregation relations altogether.[7]</p>
-<p>Aggregation can occur when a class is a collection or container of other classes, but the contained classes do not have a strong lifecycle dependency on the container. The contents of the container still exist when the container is destroyed.</p>
-<p>In UML, it is graphically represented as a hollow diamond shape on the containing class with a single line that connects it to the contained class. The aggregate is semantically an extended object that is treated as a unit in many operations, although physically it is made of several lesser objects.</p>
-<p>Example: Library and Students. Here the student can exist without library, the relation between student and library is aggregation.</p>
-<p>聚合是“有”关联关系的变体;聚合比关联更具体。它是一个代表整体或部分关系的协会。如图所示，教授’有一个’教课。作为一种关联，可以命名聚合并使用与关联相同的装饰。但是，聚合可能不涉及两个以上的类;它必须是二元关联。此外，在实现过程中聚合和关联之间几乎没有差异，并且该图可以完全跳过聚合关系。[7]</p>
-<p>当类是其他类的集合或容器时，可能会发生聚合，但所包含的类对容器没有强大的生命周期依赖性。当容器被销毁时，容器的内容仍然存在。</p>
-<p>在UML中，它在图形上表示为包含类的空心菱形形状，其中一条线将其连接到包含的类。聚合在语义上是一个扩展对象，在许多操作中被视为一个单元，尽管它在物理上由几个较小的对象组成。</p>
-<p>示例：图书馆和学生。这里的学生可以不用图书馆存在，学生和图书馆之间的关系就是聚合。</p>
+<p>一个聚合的例子：图书馆和学生。学生可以不依赖图书馆而存在，学生和图书馆之间的关系就是一种聚合。 </p>
 <h6 id="组合-Composition"><a href="#组合-Composition" class="headerlink" title="组合(Composition)"></a>组合(Composition)</h6>
       
 
