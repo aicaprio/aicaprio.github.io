@@ -202,7 +202,7 @@
 <p>有四种不同类型的关联：双向关联(bi-directionally)，单向关联(uni-directional)，聚合关联(aggregation)(包括组合/聚合)(includes composition aggregation)和自身关联(reflexive)(又称为递归关联)。 其中双向关联和单向关联是最常见的关联。</p>
 <p>关联的一个例子：航班类与飞机类就是一种双向关联。</p>
 <p>关联呈现的是<strong>两个对象间共享的静态关系。</strong> </p>
-<p>它的标志是：<strong>一条实线</strong>，也有的表示为：<strong>实线 + 非封闭箭头</strong>如下图所示：<br><img src="/2019/04/17/UML类图中的关系类型/关联箭头1.png" alt="箭头1"><br><img src="/2019/04/17/UML类图中的关系类型/关联箭头2.png" alt="箭头2"></p>
+<p>它的标志是：<strong>单纯一条实线</strong>，也有的表示为：<strong>实线 + 非封闭箭头 箭头在右侧</strong>如下图所示：<br><img src="/2019/04/17/UML类图中的关系类型/关联箭头1.png" alt="箭头1"><br><img src="/2019/04/17/UML类图中的关系类型/关联箭头2.png" alt="箭头2"></p>
 <p><img src="/2019/04/17/UML类图中的关系类型/关联例子.png" alt="示例"></p>
 <h6 id="聚合-Aggregation"><a href="#聚合-Aggregation" class="headerlink" title="聚合(Aggregation)"></a>聚合(Aggregation)</h6><p>聚合是“has a”关联关系的变体，聚合比关联(Association)更加具体些，它表示的这样的一种关联关系：“局部-全局”(part-whole)或者是“一部分”(part-of)。</p>
 <p>如下的图解所示：教授有一门课要教。</p>
@@ -211,7 +211,8 @@
 <p>但是，聚合获取一般不涉及两个以上的类，它必须是一个“二元关联关系”，<strong>除此之外，“聚合”和“关联”几乎没什么区别。</strong> </p>
 <p>当一个类是是其他类的集合或者容器时，这是一种聚合关系。但是这些被包含的类不应该对容器有强生命周期依赖关系，容器中的元素即使被销毁，容器本身也可以依旧存在。</p>
 <p>一个聚合的例子：图书馆和学生。学生可以不依赖图书馆而存在，学生和图书馆之间的关系就是一种聚合。  </p>
-<p>它的标志是：<strong>实线 + 空心菱形</strong>，需要注意的是：<strong>菱形在</strong>如下图所示：</p>
+<p>它的标志是：<strong>实线 + 空心菱形 菱形在左侧</strong>，如下图所示：</p>
+<p><img src="/2019/04/17/UML类图中的关系类型/聚合箭头.png" alt="箭头"></p>
 <p>Aggregation is a variant of the “has a” association relationship; aggregation is more specific than association. It is an association that represents a part-whole or part-of relationship. As shown in the image, a Professor ‘has a’ class to teach. As a type of association, an aggregation can be named and have the same adornments that an association can. However, an aggregation may not involve more than two classes; it must be a binary association. Furthermore, there is hardly a difference between aggregations and associations during implementation, and the diagram may skip aggregation relations altogether.[7]</p>
 <p>Aggregation can occur when a class is a collection or container of other classes, but the contained classes do not have a strong lifecycle dependency on the container. The contents of the container still exist when the container is destroyed.</p>
 <p>In UML, it is graphically represented as a hollow diamond shape on the containing class with a single line that connects it to the contained class. The aggregate is semantically an extended object that is treated as a unit in many operations, although physically it is made of several lesser objects.</p>
