@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/聚合箭头.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/聚合例子2.png">
 <meta property="og:image" content="http://yoursite.com/2019/04/17/UML类图中的关系类型/组合箭头.png">
-<meta property="og:updated_time" content="2019-12-16T08:51:13.693Z">
+<meta property="og:updated_time" content="2019-12-16T08:55:41.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UML类图中的关系类型">
 <meta name="twitter:description" content="开始前，先介绍两个在线制作UML的网站:LucidChart 和 ProcessOn 然后是“类图”的官方Wiki。直接上官方的原因是为了避免在理解某些术语时可能出现的“义同词不同”的歧义。另附上其他好的文章。 关系(Relationships)关系是一个通用术语，涵盖在类和对象图上找到的特定类型的逻辑连接。一个类可能涉及与其他类的一个或多个关系，下面逐一介绍各种类型关系。 类级关系(Class-">
@@ -253,6 +253,17 @@
 <h6 id="组合-Composition"><a href="#组合-Composition" class="headerlink" title="组合(Composition)"></a>组合(Composition)</h6><p>“组合关系”其实是一种特殊的“聚合关系”：当“整体”被销毁时，“局部”也会被销毁。<br>也就是说，组合关系中的“局部”无法独立于“整体”而存在。</p>
 <p>它的标志是：<strong>实线 + 实心菱形 菱形在左侧</strong>，如下图所示：</p>
 <p><img src="/2019/04/17/UML类图中的关系类型/组合箭头.png" alt="箭头"> </p>
+<blockquote>
+<p>组合和聚合之间的差异</p>
+</blockquote>
+<p>Differences between Composition and Aggregation<br>Composition relationship</p>
+<ol>
+<li>When attempting to represent real-world whole-part relationships, e.g. an engine is a part of a car.</li>
+<li>When the container is destroyed, the contents are also destroyed, e.g. a university and its departments.<br>Aggregation relationship</li>
+<li>When representing a software or database relationship, e.g. car model engine ENG01 is part of a car model CM01, as the engine, ENG01, may be also part of a different car model.[8]</li>
+<li>When the container is destroyed, the contents are usually not destroyed, e.g. a professor has students, when the professor dies the students don’t die along with him or her.<br>Thus the aggregation relationship is often “catalog” containment to distinguish it from composition’s “physical” containment.</li>
+</ol>
+<p>组成和聚集之间的差异<br>组合关系<br>1.尝试代表现实世界的整体关系时，例如 发动机是汽车的一部分。<br>2.当容器被破坏时，其内容物也被破坏，例如 一所大学及其系。<br>聚合关系<br>1.表示软件或数据库关系时，例如 汽车模型引擎ENG01是汽车模型CM01的一部分，因为发动机ENG01也可能是其他汽车模型的一部分。[8]<br>2.当容器被破坏时，所装物品通常不会被破坏，例如 教授有学生，当教授去世时，学生不会与他或她一起死。<br>因此，聚集关系通常是“目录”容纳，以将其与组合物的“物理”容纳区分开。</p>
 
       
 
@@ -498,11 +509,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color3">数学</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">数学</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
