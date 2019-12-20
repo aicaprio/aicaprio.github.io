@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/03/29/名词汇总篇/db1.png">
 <meta property="og:image" content="https://github.com/aicaprio/Odd-Issues/blob/master/pics/p1.png">
-<meta property="og:updated_time" content="2019-12-20T09:41:54.451Z">
+<meta property="og:updated_time" content="2019-12-20T09:46:55.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="名词汇总篇（持续更新）">
 <meta name="twitter:description" content="虽然是很基础，也许是基础到不屑的零散点，而且这里也不负责挖掘背后更多的内容。但是这里能呈现的是，知识点的快速检索以及中英文官方命名的比较等。 1. XML，XmlnsXML（Extensible Markup Language/可扩展标记语言），标准通用标记语言的子集，是一种用于标记电子文件使其具有结构性的标记语言。 Xmlns（XML Namespaces的缩写）是一个属性，是XML（标准通用标">
@@ -234,13 +234,10 @@
 <p>这还是已经躲过一个坑之后了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Query(&quot;SELECT * FROM validity_time2 WHERE feature = :feature&quot;)</span><br><span class="line">Flowable&lt;ValidityTime2&gt; getValidityTime2(int feature);</span><br></pre></td></tr></table></figure></p>
 <p>如上，如果表里没有任何数据，那么既接收不到<code>onNext</code>，也接收不到<code>onError</code>，更别提<code>onComplete</code>了。</p>
 <p>所以，直接使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Query(&quot;SELECT * FROM validity_time2 WHERE feature = :feature&quot;)</span><br><span class="line">ValidityTime2 getValidityTime2(int feature);</span><br></pre></td></tr></table></figure></p>
-<p>然后<code>Flowable.fromCallable</code>转成<code>Flowable</code>就可以了。</p>
-<p>相关资料：<a href="https://medium.com/google-developers/room-rxjava-acb0cd4f3757" target="_blank" rel="noopener">资料1</a>，<a href="https://github.com/googlesamples/android-architecture-components/issues/84" target="_blank" rel="noopener">资料2</a></p>
-<h3 id="6-nbsp-从Deivce-File-Explorer导出数据库的坑"><a href="#6-nbsp-从Deivce-File-Explorer导出数据库的坑" class="headerlink" title="6.&nbsp;从Deivce File Explorer导出数据库的坑"></a>6.&nbsp;从<code>Deivce File Explorer</code>导出数据库的坑</h3><p>一开始<code>.wal</code>文件时，直接导出<code>.db</code>文件，然后sqlite软件打开，是完全没问题。</p>
-<p>但后来出现<code>.db-wal</code>后，就无法正常查看了，而且<code>.db</code>文件的永远都是4kb。</p>
-<p>解决方法是：把<code>.db</code>,<code>.db-shm</code>,<code>.db-wal</code>一起导出，然后用sqlite软件打开<code>.db</code>文件，如下图所示：</p>
-<p><img src="/2019/03/29/名词汇总篇/db1.png" alt="图片">  </p>
-<h3 id="4-nbsp-retryWhen"><a href="#4-nbsp-retryWhen" class="headerlink" title="4.&nbsp;retryWhen"></a>4.&nbsp;retryWhen</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.retryWhen(throwableFlowable -&gt; throwableFlowable.flatMap(</span><br><span class="line">        new Function&lt;Throwable, Publisher&lt;?&gt;&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Publisher&lt;?&gt; apply(Throwable throwable) throws Exception &#123;</span><br><span class="line">                if (throwable instanceof TokenExpirationException) &#123;</span><br><span class="line">                   return  retrieveToken();</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                  return Flowable.error(throwable);</span><br><span class="line">                  // return Flowable.just(1);</span><br><span class="line">                  // throwableFlowable;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ))</span><br></pre></td></tr></table></figure>
+<p>然后<code>Flowable.fromCallable</code>转成<code>Flowable</code>就可以了。<br>相关资料：<a href="https://medium.com/google-developers/room-rxjava-acb0cd4f3757" target="_blank" rel="noopener">资料1</a>，<a href="https://github.com/googlesamples/android-architecture-components/issues/84" target="_blank" rel="noopener">资料2</a></p>
+<h3 id="6-nbsp-从Deivce-File-Explorer导出数据库的坑"><a href="#6-nbsp-从Deivce-File-Explorer导出数据库的坑" class="headerlink" title="6.&nbsp;从Deivce File Explorer导出数据库的坑"></a>6.&nbsp;从<code>Deivce File Explorer</code>导出数据库的坑</h3><p>一开始<code>.wal</code>文件时，直接导出<code>.db</code>文件，然后sqlite软件打开，是完全没问题。<br>但后来出现<code>.db-wal</code>后，就无法正常查看了，而且<code>.db</code>文件的永远都是4kb。</p>
+<p>解决方法是：把<code>.db</code>,<code>.db-shm</code>,<code>.db-wal</code>一起导出，然后用sqlite软件打开<code>.db</code>文件，如下图所示：<br><img src="/2019/03/29/名词汇总篇/db1.png" alt="图片">  </p>
+<h3 id="7-nbsp-retryWhen"><a href="#7-nbsp-retryWhen" class="headerlink" title="7.&nbsp;retryWhen"></a>7.&nbsp;retryWhen</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.retryWhen(throwableFlowable -&gt; throwableFlowable.flatMap(</span><br><span class="line">        new Function&lt;Throwable, Publisher&lt;?&gt;&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Publisher&lt;?&gt; apply(Throwable throwable) throws Exception &#123;</span><br><span class="line">                if (throwable instanceof TokenExpirationException) &#123;</span><br><span class="line">                   return  retrieveToken();</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                  return Flowable.error(throwable);</span><br><span class="line">                  // return Flowable.just(1);</span><br><span class="line">                  // throwableFlowable;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ))</span><br></pre></td></tr></table></figure>
 <p>如果apply返回一个产生异常的Flowable，则停止立即重试操作.</p>
 <p>如果apply一个不会产生异常Flowable，则会重试之前的操作.</p>
 <p>如果apply中直接throwableFlowable对象，则会报<code>This processor allows only a single Subscriber</code>的错. </p>
@@ -570,11 +567,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
+                <a href="javascript:void(0)" class="js-tag color2">Casual</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Casual</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
               </li>
             
             <div class="clearfix"></div>
