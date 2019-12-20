@@ -765,7 +765,7 @@
 <p>但后来出现<code>.db-wal</code>后，就无法正常查看了，而且<code>.db</code>文件的永远都是4kb。</p>
 <p>解决方法是：把<code>.db</code>,<code>.db-shm</code>,<code>.db-wal</code>一起导出，然后用sqlite软件打开<code>.db</code>文件，如下图所示：<br><img src="/2019/03/29/名词汇总篇/db1.png" alt="图片">  </p>
 <h3 id="7-nbsp-retryWhen"><a href="#7-nbsp-retryWhen" class="headerlink" title="7.&nbsp;retryWhen"></a>7.&nbsp;retryWhen</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.retryWhen(throwableFlowable -&gt; throwableFlowable.flatMap(</span><br><span class="line">        new Function&lt;Throwable, Publisher&lt;?&gt;&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public Publisher&lt;?&gt; apply(Throwable throwable) throws Exception &#123;</span><br><span class="line">                if (throwable instanceof TokenExpirationException) &#123;</span><br><span class="line">                   return  retrieveToken();</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                  return Flowable.error(throwable);</span><br><span class="line">                  // return Flowable.just(1);</span><br><span class="line">                  // throwableFlowable;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ))</span><br></pre></td></tr></table></figure>
-<p>如果apply返回一个产生异常的Flowable，则停止立即重试操作.<br>如果apply一个不会产生异常Flowable，则会重试之前的操作.<br>如果apply中直接throwableFlowable对象，则会报<code>This processor allows only a single Subscriber</code>的错. </p>
+<p>如果apply返回一个产生异常的Flowable，则立即停止重试操作.<br>如果apply一个不会产生异常Flowable，则会重试之前的操作.<br>如果apply中直接throwableFlowable对象，则会报<code>This processor allows only a single Subscriber</code>的错. </p>
 <h3 id="8-nbsp-使用RxLifecyle时注意"><a href="#8-nbsp-使用RxLifecyle时注意" class="headerlink" title="8.&nbsp;使用RxLifecyle时注意."></a>8.&nbsp;使用RxLifecyle时注意.</h3><p>如果Activity注册了bindToLifecycle，当Activity关闭时，如果有Rx还在运行中，不会走<code>onError</code>，而是<code>onComplete</code>.</p>
 <h3 id="9-nbsp-android-enableAapt2-false"><a href="#9-nbsp-android-enableAapt2-false" class="headerlink" title="9.&nbsp;android.enableAapt2=false"></a>9.&nbsp;<code>android.enableAapt2=false</code></h3><p>这条语句应该设置在<code>gradle.properties</code>里，用法说明：</p>
 <blockquote>
@@ -1067,11 +1067,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
+                <a href="javascript:void(0)" class="js-tag color2">Casual</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Casual</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
               </li>
             
             <div class="clearfix"></div>
