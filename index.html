@@ -752,13 +752,13 @@
 </blockquote>
 <h3 id="5-nbsp-RxRoom的几个坑："><a href="#5-nbsp-RxRoom的几个坑：" class="headerlink" title="5.&nbsp;RxRoom的几个坑："></a>5.&nbsp;RxRoom的几个坑：</h3><p>直接使用<code>Flowable&lt;List&lt;T&gt;&gt;</code>后：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Query(&quot;SELECT * FROM history_user&quot;)</span><br><span class="line">Flowable&lt;List&lt;HistoryUser&gt;&gt; loadHistoryUsers();</span><br></pre></td></tr></table></figure></p>
 <p>使用后就不结束了，就是说不走<code>onComplte</code>了。。。</p>
-<p>原因是：<br>直接使用<code>Flowable</code>后，当你要查询的数据更新后，你就会接收到通知：</p>
+<p>原因是，直接使用<code>Flowable</code>后，当你要查询的数据更新后，你就会接收到通知：</p>
 <blockquote>
 <p>Every time the user data is updated, the Flowable object will emit automatically,<br>allowing you to update the UI based on the latest data.</p>
 </blockquote>
-<p>这还是已经躲过一个坑之后了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Query(&quot;SELECT * FROM validity_time2 WHERE feature = :feature&quot;)</span><br><span class="line">Flowable&lt;ValidityTime2&gt; getValidityTime2(int feature);</span><br></pre></td></tr></table></figure></p>
-<p>如上，如果表里没有任何数据，那么既接收不到<code>onNext</code>，也接收不到<code>onError</code>，更别提<code>onComplete</code>了。</p>
-<p>所以，直接使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Query(&quot;SELECT * FROM validity_time2 WHERE feature = :feature&quot;)</span><br><span class="line">ValidityTime2 getValidityTime2(int feature);</span><br></pre></td></tr></table></figure></p>
+<p>这还是已经躲过一个坑之后了，下面继续：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Query(&quot;SELECT * FROM validity_time2 WHERE feature = :feature&quot;)</span><br><span class="line">Flowable&lt;ValidityTime2&gt; getValidityTime2(int feature);</span><br></pre></td></tr></table></figure></p>
+<p>如果表里没有任何数据，那么既接收不到<code>onNext</code>，也接收不到<code>onError</code>，更别提<code>onComplete</code>了。</p>
+<p><strong>解决办法：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Query(&quot;SELECT * FROM validity_time2 WHERE feature = :feature&quot;)</span><br><span class="line">ValidityTime2 getValidityTime2(int feature);</span><br></pre></td></tr></table></figure></p>
 <p>然后<code>Flowable.fromCallable</code>转成<code>Flowable</code>就可以了。<br>相关资料：<a href="https://medium.com/google-developers/room-rxjava-acb0cd4f3757" target="_blank" rel="noopener">资料1</a>，<a href="https://github.com/googlesamples/android-architecture-components/issues/84" target="_blank" rel="noopener">资料2</a></p>
 <h3 id="6-nbsp-从Deivce-File-Explorer导出数据库的坑"><a href="#6-nbsp-从Deivce-File-Explorer导出数据库的坑" class="headerlink" title="6.&nbsp;从Deivce File Explorer导出数据库的坑"></a>6.&nbsp;从<code>Deivce File Explorer</code>导出数据库的坑</h3><p>一开始<code>.wal</code>文件时，直接导出<code>.db</code>文件，然后sqlite软件打开，是完全没问题。<br>但后来出现<code>.db-wal</code>后，就无法正常查看了，而且<code>.db</code>文件的永远都是4kb。</p>
 <p>解决方法是：把<code>.db</code>,<code>.db-shm</code>,<code>.db-wal</code>一起导出，然后用sqlite软件打开<code>.db</code>文件，如下图所示：<br><img src="/2019/03/29/名词汇总篇/db1.png" alt="图片">  </p>
@@ -1069,11 +1069,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
+                <a href="javascript:void(0)" class="js-tag color2">Casual</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Casual</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
               </li>
             
             <div class="clearfix"></div>
