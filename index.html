@@ -182,7 +182,7 @@
       
         <h3 id="1-字符串-gt-原始内容与转义内容"><a href="#1-字符串-gt-原始内容与转义内容" class="headerlink" title="1. 字符串-&gt;原始内容与转义内容"></a>1. 字符串-&gt;原始内容与转义内容</h3><p><strong>Swift</strong><br><code>#&quot;&quot;#</code>包含的字符串，会显示原始内容。<br><code>#&quot;&quot;#</code>包含的字符串，如果在转义字符前加<code>#</code>，则转义字符生效。<br>显示原始内容一般还是使用<code>&quot;&quot;&quot;</code>比较方便。<br><img src="/2020/08/04/Kotlin-vs-Swift/字符串1.png" alt="示例"></p>
 <blockquote>
-<p>比较：<br>在Swfit中，<code>&quot;&quot;&quot;</code>的起始必须是独立的一行，结束也必须是独立的一行。<br>但是在Kotlin中，没有这个限制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val str = &quot;&quot;&quot;三个双引号&quot;&quot;&quot;</span><br><span class="line">println(str)</span><br></pre></td></tr></table></figure></p>
+<p>比较：<br>在Swfit中，<code>&quot;&quot;&quot;</code>的起始必须是独立的一行，结束也必须是独立的一行。<br>但是在Kotlin中，没有这个限制：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val str = &quot;&quot;&quot;原始内容&quot;&quot;&quot;</span><br><span class="line">println(str)</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 
       
